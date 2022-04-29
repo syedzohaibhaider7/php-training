@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteRule ^insert-form insert-form.php [NC,L]
+RewriteRule ^insert insert.php [NC,L]
+RewriteRule ^table table.php [NC,L]
+RewriteRule ^edit-form edit-form.php [NC,L]
+RewriteRule ^delete delete.php [NC,L]
+RewriteRule ^edit-record/([0-9]+([0-9])*)$ editRecord.php?id=$1 [NC,L]
