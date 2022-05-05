@@ -1,7 +1,7 @@
 <?php 
-include "QueryHandler.php";
+include "DBHandler.php";
 
-$queryHdl = new QueryHandler();
+$queryHdl = new DB();
 
 if (isset($_POST['submit'])) {
     $data = [

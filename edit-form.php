@@ -1,11 +1,7 @@
 <?php
-include "QueryHandler.php";
+session_start();
 
-$id = $_GET['id'];
-
-$queryHdl = new QueryHandler();
-$queryHdl->Query("SELECT id, fName, passwd, email, age, gender, pic FROM info WHERE id=?", [$id]);
-$row = $queryHdl->query->fetch();
+$row = $_SESSION["data"];
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -115,7 +111,7 @@ $row = $queryHdl->query->fetch();
     });
 
     function genderSelect() {
-        let genderSelect = '<?php echo $row["gender"]; ?>';
+        let genderSelect = '<?php echo $row->{"gender"}; ?>';
         if (genderSelect == "male") {
             $('select option[value="male"]').attr("selected", true);
         } else if (genderSelect == "female") {
@@ -131,7 +127,7 @@ $row = $queryHdl->query->fetch();
 
 <h1>Update Information</h1>
 <form action="update.php" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+    <input type="hidden" name="id" value="<?php echo $row->{"id"}; ?>">
     <div>
         <label>Picture: </label>
         <input type="file" id="image" name="image">
@@ -140,22 +136,22 @@ $row = $queryHdl->query->fetch();
     <br>
     <div>
         <label>Full Name: </label>
-        <input type="text" id="name" name="name" value="<?php echo $row["fName"]; ?>">
+        <input type="text" id="name" name="name" value="<?php echo $row->{"fName"}; ?>">
         <span id="err-name" style="color: red;"></span>
     </div>
     <div>
         <label>Password: </label>
-        <input type="password" id="passwd" name="passwd" value="<?php echo $row["passwd"]; ?>">
+        <input type="password" id="passwd" name="passwd" value="<?php echo $row->{"passwd"}; ?>">
         <span id="err-passwd" style="color: red;"></span>
     </div>
     <div>
         <label>Email: </label>
-        <input type="email" id="email" name="email" value="<?php echo $row["email"]; ?>">
+        <input type="email" id="email" name="email" value="<?php echo $row->{"email"}; ?>">
         <span id="err-email" style="color: red;"></span>
     </div>
     <div>
         <label>Age: </label>
-        <input type="number" id="age" name="age" value="<?php echo $row["age"]; ?>">
+        <input type="number" id="age" name="age" value="<?php echo $row->{"age"}; ?>">
         <span id="err-age" style="color: red;"></span>
     </div>
     <br>
@@ -172,3 +168,7 @@ $row = $queryHdl->query->fetch();
     <br>
     <input name="submit" type="submit">
 </form>
+
+<?php
+session_destroy();
+?>
