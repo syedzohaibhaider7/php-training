@@ -13,8 +13,7 @@ if (isset($_POST['submit'])) {
     ];
     $target = "images/" . basename($_FILES['image']['name']);
     $image = $_FILES['image']['name'];
-    $queryHdl->Query("INSERT INTO info (fName, passwd, email, age, gender, pic) VALUES (?, ?, ?, ?, ?, ?)", [$data['name'], $data['passwd'], $data['email'], $data['age'], $data['gender'], $image]);
-    move_uploaded_file($_FILES['image']['tmp_name'], $target);
+    $queryHdl->insertData($data, $target, $image);
     header("location:/");
 }
 ?>

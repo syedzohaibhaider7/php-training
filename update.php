@@ -14,8 +14,7 @@ if (isset($_POST['submit'])) {
     ];
     $target = "images/" . basename($_FILES['image']['name']);
     $image = $_FILES['image']['name'];
-    $queryHdl->Query("UPDATE info SET fName=?, passwd=?, email=?, age=?, gender=?, pic=? WHERE id=?", [$data['name'], $data['passwd'], $data['email'], $data['age'], $data['gender'], $image, $data['id']]);
-    move_uploaded_file($_FILES['image']['tmp_name'], $target);
-    header("location:table");
+    $queryHdl->updateData($data, $target, $image);
+    header("location:get.php");
 }
 ?>

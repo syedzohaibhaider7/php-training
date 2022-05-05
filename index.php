@@ -12,7 +12,7 @@
     <h1>Admin Panel</h1>
     <form>
         <input type="submit" formaction="insert-form" value="Insert User"><br><br>
-        <input type="submit" formaction="table" value="Display Database"><br><br>
+        <input type="submit" formaction="get.php" value="Display Database"><br><br>
     </form>
 </body>
 

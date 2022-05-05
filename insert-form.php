@@ -24,6 +24,7 @@
                 error = true;
             } else {
                 $("#err-name").hide();
+                error = false;
             }
         });
 
@@ -43,6 +44,7 @@
                 error = true;
             } else {
                 $("#err-passwd").hide();
+                error = false;
             }
         });
 
@@ -58,6 +60,7 @@
                 error = true;
             } else {
                 $("#err-email").hide();
+                error = false;
             }
         });
         $("#age").keyup(function() {
@@ -72,6 +75,7 @@
                 error = true;
             } else {
                 $("#err-age").hide();
+                error = false;
             }
         });
         $("#gender").click(function() {
@@ -82,6 +86,7 @@
                 error = true;
             } else {
                 $("#err-gender").hide();
+                error = false;
             }
         });
 
@@ -90,14 +95,15 @@
             var extension = $("#image").val().split(".").pop().toLowerCase();
             if (image_name == "") {
                 $("#err-image").show();
-                $("#err-image").html(" * enter picture");
+                $("#err-image").html(" * upload picture");
                 return false;
-            } else if (jQuery.inArray(extension, ["gif", "png", "jpg", "jpeg"] == -1)) {
-                $("#err-image").show();
-                $("#err-image").html(" * invalid file");
-                return false;
+            // } else if (jQuery.inArray(extension, ["gif", "png", "jpg", "jpeg", "jfif"] == -1)) {
+            //     $("#err-image").show();
+            //     $("#err-image").html(" * invalid file");
+            //     return false;
             } else {
                 $("#err-image").hide();
+                return true;
             }
             if (error) {
                 return false;
@@ -106,49 +112,46 @@
     });
 </script>
 
-<body>
-    <h1>Insert Form</h1>
-    <p>Enter user information below:
-    <form action="insert" method="post" enctype="multipart/form-data">
-        <div>
-            <label>Picture: </label>
-            <input type="file" id="image" name="image">
-            <span id="err-image" style="color: red;"></span>
-        </div>
-        <br>
-        <div>
-            <label>Full Name: </label>
-            <input type="text" id="name" name="name">
-            <span id="err-name" style="color: red;"></span>
-        </div>
-        <div>
-            <label>Password: </label>
-            <input type="password" id="passwd" name="passwd">
-            <span id="err-passwd" style="color: red;"></span>
-        </div>
-        <div>
-            <label>Email: </label>
-            <input type="email" id="email" name="email">
-            <span id="err-email" style="color: red;"></span>
-        </div>
-        <div>
-            <label>Age: </label>
-            <input type="number" id="age" name="age" min="1">
-            <span id="err-age" style="color: red;"></span>
-        </div>
-        <br>
-        <div>
-            <label for="gender">Gender: </label>
-            <select name="gender" id="gender">
-                <option value="select">---</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-            <span id="err-gender" style="color: red;"></span>
-        </div>
-        <br>
-        <input name="submit" type="submit">
-    </form>
-    </p>
-</body>
+<h1>Insert Form</h1>
+<p>Enter user information below:
+<form action="insert.php" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Picture: </label>
+        <input type="file" id="image" name="image">
+        <span id="err-image" style="color: red;"></span>
+    </div>
+    <br>
+    <div>
+        <label>Full Name: </label>
+        <input type="text" id="name" name="name">
+        <span id="err-name" style="color: red;"></span>
+    </div>
+    <div>
+        <label>Password: </label>
+        <input type="password" id="passwd" name="passwd">
+        <span id="err-passwd" style="color: red;"></span>
+    </div>
+    <div>
+        <label>Email: </label>
+        <input type="email" id="email" name="email">
+        <span id="err-email" style="color: red;"></span>
+    </div>
+    <div>
+        <label>Age: </label>
+        <input type="number" id="age" name="age">
+        <span id="err-age" style="color: red;"></span>
+    </div>
+    <br>
+    <div>
+        <label for="gender">Gender: </label>
+        <select name="gender" id="gender">
+            <option value="select">---</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <span id="err-gender" style="color: red;"></span>
+    </div>
+    <br>
+    <input name="submit" type="submit">
+</form>
