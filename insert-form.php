@@ -97,10 +97,10 @@
                 $("#err-image").show();
                 $("#err-image").html(" * upload picture");
                 return false;
-            // } else if (jQuery.inArray(extension, ["gif", "png", "jpg", "jpeg", "jfif"] == -1)) {
-            //     $("#err-image").show();
-            //     $("#err-image").html(" * invalid file");
-            //     return false;
+            } else if ($.inArray(extension, ["gif", "png", "jpg", "jpeg", "jfif", "bmp"]) == -1) {
+                $("#err-image").show();
+                $("#err-image").html(" * invalid file");
+                return false;
             } else {
                 $("#err-image").hide();
                 return true;

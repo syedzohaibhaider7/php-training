@@ -6,6 +6,7 @@ $edit = new Edit($id);
 $row = $edit->getData();
 ?>
 
+<title>Edit User</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     var nameValidation = /^([a-zA-Z])+(\s{0,1}([a-zA-Z]))*$/;
@@ -99,10 +100,10 @@ $row = $edit->getData();
                 $("#err-image").show();
                 $("#err-image").html(" * upload picture");
                 return false;
-            // } else if (jQuery.inArray(extension, ["gif", "png", "jpg", "jpeg"] == -1)) {
-            //     $("#err-image").show();
-            //     $("#err-image").html(" * invalid file");
-            //     return false;
+            } else if ($.inArray(extension, ["gif", "png", "jpg", "jpeg", "jfif", "bmp"]) == -1) {
+                $("#err-image").show();
+                $("#err-image").html(" * invalid file");
+                return false;
             } else {
                 $("#err-image").hide();
             }

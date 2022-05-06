@@ -5,6 +5,8 @@ $get = new Get();
 $row = $get->getData();
 $rowNum = $get->getNumOfRows();
 
+echo "<title>Table</title>";
+
 if ($rowNum > 0) {
     echo
     "<h1>Whole Database</h1>
