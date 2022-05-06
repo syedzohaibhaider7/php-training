@@ -1,9 +1,24 @@
 <?php
 include "DBHandler.php";
 
+class Delete
+{
+    private $db;
+    private $data;
+
+    public function __construct($id)
+    {
+        $this->db = new DB();
+        $this->data = $this->db->deleteData($id);
+    }
+    public function getData()
+    {
+        return $this->data;
+    }
+}
+
 $id = $_GET['id'];
 
-$queryHdl = new DB();
-$queryHdl->deleteData($id);
-header("location:get.php");
+$delete = new Delete($id);
+header("location:table");
 ?>

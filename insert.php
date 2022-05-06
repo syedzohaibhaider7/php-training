@@ -1,7 +1,21 @@
 <?php 
 include "DBHandler.php";
 
-$queryHdl = new DB();
+class Insert
+{
+    private $db;
+    private $data;
+
+    public function __construct($data, $target, $image)
+    {
+        $this->db = new DB();
+        $this->data = $this->db->insertData($data, $target, $image);
+    }
+    public function getData()
+    {
+        return $this->data;
+    }
+}
 
 if (isset($_POST['submit'])) {
     $data = [
@@ -13,7 +27,7 @@ if (isset($_POST['submit'])) {
     ];
     $target = "images/" . basename($_FILES['image']['name']);
     $image = $_FILES['image']['name'];
-    $queryHdl->insertData($data, $target, $image);
+    $insert = new Insert($data, $target, $image);
     header("location:/");
 }
 ?>

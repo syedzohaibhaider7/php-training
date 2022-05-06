@@ -1,7 +1,9 @@
 <?php
-session_start();
+include "edit.php";
 
-$row = $_SESSION["data"];
+$id = $_GET['id'];
+$edit = new Edit($id);
+$row = $edit->getData();
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -168,7 +170,3 @@ $row = $_SESSION["data"];
     <br>
     <input name="submit" type="submit">
 </form>
-
-<?php
-session_destroy();
-?>

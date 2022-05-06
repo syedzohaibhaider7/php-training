@@ -1,11 +1,19 @@
 <?php
 include "DBHandler.php";
-session_start();
 
-$id = $_GET['id'];
+class Edit
+{
+    private $db;
+    private $data;
 
-$queryHdl = new DB();
-$data = $queryHdl->selectData([$id]);
-$_SESSION["data"] = $data;
-header("location:edit-form");
+    public function __construct($id)
+    {
+        $this->db = new DB();
+        $this->data = $this->db->selectData([$id]);
+    }
+    public function getData()
+    {
+        return $this->data;
+    }
+}
 ?>

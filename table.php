@@ -1,8 +1,9 @@
 <?php
-session_start();
+include "get.php";
 
-$row = $_SESSION["data"];
-$rowNum = $_SESSION["num"];
+$get = new Get();
+$row = $get->getData();
+$rowNum = $get->getNumOfRows();
 
 if ($rowNum > 0) {
     echo
@@ -31,7 +32,7 @@ if ($rowNum > 0) {
             <img src='images/" . $row[$i]->{"pic"} . "' style='width: 50px; height: 30px;'>
             </td>
             <td style='border: 1px solid black; border-collapse: collapse; text-align: center;'>
-                <a href='edit.php?id=".$row[$i]->{"id"}."' style='text-decoration:none; color: Black; background-color: Gold; display: block; padding: 6px;'>Edit</a>    
+                <a href='edit-form?id=".$row[$i]->{"id"}."' style='text-decoration:none; color: Black; background-color: Gold; display: block; padding: 6px;'>Edit</a>    
             </td>
             <td style='border: 1px solid black; border-collapse: collapse; text-align: center;'>
                 <a href='delete.php?id=".$row[$i]->{"id"}."' style='text-decoration:none; color: Black; background-color: IndianRed; display: block; padding: 6px;'>Delete</a>
@@ -42,5 +43,4 @@ if ($rowNum > 0) {
 } else {
     echo "0 results";
 }
-session_destroy();
 ?>
